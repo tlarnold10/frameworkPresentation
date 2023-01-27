@@ -1,0 +1,49 @@
+<p>recipe-form works!</p>
+
+<form>
+    <div class="form-group">
+        <label for="minProtein">Min Protein: </label>
+        <input type="text" class="form-control" id="minProtein" required name="minProtein" [(ngModel)]="nutrition.minProtein">
+    </div>
+    <div class="form-group">
+        <label for="maxProtein">Max Protein: </label>
+        <input type="text" class="form-control" id="maxProtein" required name="maxProtein" [(ngModel)]="nutrition.maxProtein">
+    </div>
+    <div class="form-group">
+        <label for="minFat">Min Fats: </label>
+        <input type="text" class="form-control" id="minFat" required name="minFat" [(ngModel)]="nutrition.minFat">
+    </div>
+    <div class="form-group">
+        <label for="maxFat">Max Fats: </label>
+        <input type="text" class="form-control" id="maxFat" required name="maxFat" [(ngModel)]="nutrition.maxFat">
+    </div>
+    <div class="form-group">
+        <label for="minCarbs">Min Carbs: </label>
+        <input type="text" class="form-control" id="minCarbs" required name="minCarbs" [(ngModel)]="nutrition.minCarbs">
+    </div>
+    <div class="form-group">
+        <label for="maxCarbs">Max Carbs: </label>
+        <input type="text" class="form-control" id="maxCarbs" required name="maxCarbs" [(ngModel)]="nutrition.maxCarbs">
+    </div>
+    <div class="form-group">
+        <label for="minCalories">Min Calories: </label>
+        <input type="text" class="form-control" id="minCalories" required name="minCalories" [(ngModel)]="nutrition.minCalories">
+    </div>
+    <div class="form-group">
+        <label for="maxCalories">Max Calories: </label>
+        <input type="text" class="form-control" id="maxCalories" required name="maxCalories" [(ngModel)]="nutrition.maxCalories">
+    </div>
+    <div class="form-group">
+        <label for="numberOfRecords">Number of Recipes: </label>
+        <input type="text" class="form-control" id="numberOfRecords" required name="numberOfRecords" [(ngModel)]="nutrition.numberOfRecords">
+    </div>
+    <button (click)="submit()">
+      Submit
+    </button>
+</form>
+
+<div *ngIf="!loading">
+    <ul *ngFor="let recipie of recipies">
+        <li>{{ recipie.title }}</li>
+    </ul>
+</div>
