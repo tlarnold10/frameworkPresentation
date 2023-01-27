@@ -1,95 +1,103 @@
 import React, { useState } from 'react';
 import { Recipe } from './recipe.model';
 import { Nutrition } from './nutrition-form.model';
+import './nutrition-form.css'
 
-class NutritionForm extends React.Component<{}, { recipes: Recipe[], nutritionInput: Nutrition }> {
+const NutritionForm = () => {
+    console.log("help");
+    const [recipes, setRecipes] = useState<Recipe[]>([]);
+    const [nutritionInput, setNutritionInput] = useState<Nutrition>({
+      minProtein: 0,
+      maxProtein: 0,
+      minFat: 0,
+      maxFat: 0,
+      minCarbs: 0,
+      maxCarbs: 0,
+      minCalories: 0,
+      maxCalories: 0,
+      numberOfRecords: 0,
+    });
 
-    testVar: string = "Hello world";
-
-    constructor(props: any) {
-      super(props);
-      this.state = {
-        recipes: [],
-        nutritionInput: {
-          minProtein: 0,
-          maxProtein: 0,
-          minFat: 0,
-          maxFat: 0,
-          minCarbs: 0,
-          maxCarbs: 0,
-          minCalories: 0,
-          maxCalories: 0,
-          numberOfRecords: 0,
-        }
-      }
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.handleInputChange = this.handleInputChange.bind(this);
+    const handleChange = (event: any) => {
+      var value = event.target.value;
+      var name = event.target.name;
+      setNutritionInput({
+        ...nutritionInput, [name]: value
+      });
     }
 
-    handleInputChange(event: any) {
-      const target = event.target;
-      const name = target.name;
-    }
-    
-    handleSubmit(event: any) {
-      this.setState({ nutritionInput: event.target.value });
-      
-      fetch(this.generateUrl())
-        .then(response => response.json())
-        .then(data => this.setState({ recipes: data}));
+    const handleSubmit = (event: any) => {
+      alert(nutritionInput.minProtein + nutritionInput.numberOfRecords);
     }
 
-    private generateUrl(): string {
+    const generateUrl = () => {
       var apiUrl: string = "https://api.spoonacular.com/recipes/findByNutrients?apiKey=8989350b92c448b890ada075143c8d0a" 
-      if (this.state.nutritionInput.minProtein > 0) {
-        apiUrl = apiUrl + "&minProtein=" + this.state.nutritionInput.minProtein;
+      if (nutritionInput.minProtein > 0) {
+        apiUrl = apiUrl + "&minProtein=" + nutritionInput.minProtein;
       }
-      if (this.state.nutritionInput.maxProtein > 0) {
-        apiUrl = apiUrl + "&maxProtein=" + this.state.nutritionInput.maxProtein;
+      if (nutritionInput.maxProtein > 0) {
+        apiUrl = apiUrl + "&maxProtein=" + nutritionInput.maxProtein;
       }
-      if (this.state.nutritionInput.minFat > 0) {
-        apiUrl = apiUrl + "&minFat=" + this.state.nutritionInput.minFat;
+      if (nutritionInput.minFat > 0) {
+        apiUrl = apiUrl + "&minFat=" + nutritionInput.minFat;
       }
-      if (this.state.nutritionInput.maxFat > 0) {
-        apiUrl = apiUrl + "&maxFat=" + this.state.nutritionInput.maxFat;
+      if (nutritionInput.maxFat > 0) {
+        apiUrl = apiUrl + "&maxFat=" + nutritionInput.maxFat;
       }
-      if (this.state.nutritionInput.minCarbs > 0) {
-        apiUrl = apiUrl + "&minCarbs=" + this.state.nutritionInput.minCarbs;
+      if (nutritionInput.minCarbs > 0) {
+        apiUrl = apiUrl + "&minCarbs=" + nutritionInput.minCarbs;
       }
-      if (this.state.nutritionInput.maxCarbs > 0) {
-        apiUrl = apiUrl + "&maxCarbs=" + this.state.nutritionInput.maxCarbs;
+      if (nutritionInput.maxCarbs > 0) {
+        apiUrl = apiUrl + "&maxCarbs=" + nutritionInput.maxCarbs;
       }
-      if (this.state.nutritionInput.minCalories > 0) {
-        apiUrl = apiUrl + "&minCalories=" + this.state.nutritionInput.minCalories;
+      if (nutritionInput.minCalories > 0) {
+        apiUrl = apiUrl + "&minCalories=" + nutritionInput.minCalories;
       }
-      if (this.state.nutritionInput.maxCalories > 0) {
-        apiUrl = apiUrl + "&maxCalories=" + this.state.nutritionInput.maxCalories;
+      if (nutritionInput.maxCalories > 0) {
+        apiUrl = apiUrl + "&maxCalories=" + nutritionInput.maxCalories;
       }
-      if (this.state.nutritionInput.numberOfRecords > 0) {
-        apiUrl = apiUrl + "&numberOfRecords=" + this.state.nutritionInput.numberOfRecords;
+      if (nutritionInput.numberOfRecords > 0) {
+        apiUrl = apiUrl + "&numberOfRecords=" + nutritionInput.numberOfRecords;
       }
       else {
         apiUrl = apiUrl + "&numberOfRecords=10";
       }
       return apiUrl;
     }
+
+    return (
+      <div className='container'>
+        <form onSubmit={handleSubmit}>
+          <label>Min Protein: </label>
+            <input type="number" name="minProtein" onChange={handleChange}/><br/>
+          <label>Max Protein: </label>
+            <input type="number" name="maxProtein" onChange={handleChange}/><br/>
+          <label>Min Fat: </label>
+            <input type="number" name="minProtein" onChange={handleChange}/><br/>
+          <label>Max Fat: </label>
+            <input type="number" name="maxFat" onChange={handleChange}/><br/>
+          <label>Min Carbs: </label>
+            <input type="number" name="minCarbs" onChange={handleChange}/><br/>
+          <label>Max Carbs: </label>
+            <input type="number" name="maxCarbs" onChange={handleChange}/><br/>
+          <label>Min Calories: </label>
+            <input type="number" name="minCalories" onChange={handleChange}/><br/>
+          <label>Max Calories: </label>
+            <input type="number" name="maxCalories" onChange={handleChange}/><br/>
+          <label>Number of Records: </label>
+            <input type="number" name="numberOfRecords" onChange={handleChange}/><br/>
+          <button type='submit' value="Submit">Submit</button>
+        </form>
+        <ul>
+          {recipes.map(recipe => (
+            <li>{recipe.title}</li>
+          ))}
+        </ul>
+      </div>
+    )
+    
   
-    render() {
-      return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <label>Min Protein: </label>
-              <input type="number" name="nutritionInput.minProtein" value={this.state.nutritionInput.minProtein} onChange={this.handleInputChange}/>
-            <button type='submit' value="Submit">Submit</button>
-          </form>
-          <ul>
-            {this.state.recipes.map(recipe => (
-              <li>{recipe.title}</li>
-            ))}
-          </ul>
-        </div>
-      )
-    }
-}
+  }
+
   
 export default NutritionForm;
