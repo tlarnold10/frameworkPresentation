@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Recipe } from './recipe.model';
 import { Nutrition } from './nutrition-form.model';
+import { List, Box, TextField, Button  } from '@mui/material';
 import './nutrition-form.css'
 
 const NutritionForm = () => {
@@ -68,25 +69,16 @@ const NutritionForm = () => {
     return (
       <div className='container'>
         <form onSubmit={handleSubmit}>
-          <label>Min Protein: </label>
-            <input type="number" name="minProtein" onChange={handleChange}/><br/>
-          <label>Max Protein: </label>
-            <input type="number" name="maxProtein" onChange={handleChange}/><br/>
-          <label>Min Fat: </label>
-            <input type="number" name="minProtein" onChange={handleChange}/><br/>
-          <label>Max Fat: </label>
-            <input type="number" name="maxFat" onChange={handleChange}/><br/>
-          <label>Min Carbs: </label>
-            <input type="number" name="minCarbs" onChange={handleChange}/><br/>
-          <label>Max Carbs: </label>
-            <input type="number" name="maxCarbs" onChange={handleChange}/><br/>
-          <label>Min Calories: </label>
-            <input type="number" name="minCalories" onChange={handleChange}/><br/>
-          <label>Max Calories: </label>
-            <input type="number" name="maxCalories" onChange={handleChange}/><br/>
-          <label>Number of Records: </label>
-            <input type="number" name="numberOfRecords" onChange={handleChange}/><br/>
-          <button type='submit' value="Submit">Submit</button>
+          <TextField className='inputField' type="number" name="minProtein" label="Min Protein" onChange={handleChange}/><br/>
+          <TextField className='inputField' type="number" name="maxProtein" label="Max Protein" onChange={handleChange}/><br/>
+          <TextField className='inputField' type="number" name="minFat" label="Min Fat" onChange={handleChange}/><br/>
+          <TextField className='inputField' type="number" name="maxFat" label="Max Fat" onChange={handleChange}/><br/>
+          <TextField className='inputField' type="number" name="minCarbs" label="Min Carbs" onChange={handleChange}/><br/>
+          <TextField className='inputField' type="number" name="maxCarbs" label="Max Carbs" onChange={handleChange}/><br/>
+          <TextField className='inputField' type="number" name="minCalories" label="Min Calories" onChange={handleChange}/><br/>
+          <TextField className='inputField' type="number" name="maxCalories" label="Max Calories" onChange={handleChange}/><br/>
+          <TextField className='inputField' type="number" name="numberOfRecords" label="Number of Records" onChange={handleChange}/><br/>
+          <Button className='submitButton' variant="contained" type='submit' value="Submit">Submit</Button>
         </form>
         <ul>
           {recipes.map(recipe => (
