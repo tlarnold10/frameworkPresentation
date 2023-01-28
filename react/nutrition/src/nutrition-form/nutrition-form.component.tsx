@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Recipe } from './recipe.model';
 import { Nutrition } from './nutrition-form.model';
-import { List, Box, TextField, Button  } from '@mui/material';
+import { Table, ListItem, TextField, Button, TableHead, TableBody, TableRow, TableCell  } from '@mui/material';
 import './nutrition-form.css'
 
 const NutritionForm = () => {
@@ -28,7 +28,17 @@ const NutritionForm = () => {
     }
 
     const handleSubmit = (event: any) => {
-      alert(nutritionInput.minProtein + nutritionInput.numberOfRecords);
+      event.preventDefault();
+      // alert(nutritionInput.minProtein + nutritionInput.numberOfRecords);
+      var apiUrl = generateUrl();
+      console.log(apiUrl);
+      fetch(apiUrl)
+        .then(response => response.json())
+        // .then(data => console.log(data))
+        // .then(data => recipes.map(data => recipes.push(data)))
+        .then(data => setRecipes(data))
+        .then(item => console.log(recipes))
+        .catch(err => { console.log(err) });
     }
 
     const generateUrl = () => {
@@ -80,16 +90,32 @@ const NutritionForm = () => {
           <TextField className='inputField' type="number" name="numberOfRecords" label="Number of Records" onChange={handleChange}/><br/>
           <Button className='submitButton' variant="contained" type='submit' value="Submit">Submit</Button>
         </form>
-        <ul>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Title</TableCell>
+              <TableCell>Calories</TableCell>
+              <TableCell>Fat&nbsp;(g)</TableCell>
+              <TableCell>Carbs&nbsp;(g)</TableCell>
+              <TableCell>Protein&nbsp;(g)</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
           {recipes.map(recipe => (
-            <li>{recipe.title}</li>
+            <TableRow>
+              <TableCell>{recipe.title}</TableCell>
+              <TableCell>{recipe.calories}</TableCell>
+              <TableCell>{recipe.fat}</TableCell>
+              <TableCell>{recipe.carbs}</TableCell>
+              <TableCell>{recipe.protein}</TableCell>
+            </TableRow>
           ))}
-        </ul>
+          </TableBody>
+        </Table>
       </div>
     )
     
   
   }
 
-  
 export default NutritionForm;
