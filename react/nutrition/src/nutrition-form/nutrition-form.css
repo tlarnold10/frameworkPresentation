@@ -1,3 +1,11 @@
 .container {
     margin: 50px;
 }
+
+.inputField {
+    margin: 15px !important;
+}
+
+.submitButton {
+    margin: 15px !important;
+}
