@@ -40,10 +40,10 @@ export class HttpServiceService {
       this.apiUrl = this.apiUrl + "&maxCalories=" + nutrition.maxCalories;
     }
     if (nutrition.numberOfRecords > 0) {
-      this.apiUrl = this.apiUrl + "&numberOfRecords=" + nutrition.numberOfRecords;
+      this.apiUrl = this.apiUrl + "&number=" + nutrition.numberOfRecords;
     }
     else {
-      this.apiUrl = this.apiUrl + "&numberOfRecords=10";
+      this.apiUrl = this.apiUrl + "&number=10";
     }
     return this._httpClient.get(this.apiUrl);
   }

@@ -68,10 +68,10 @@ const NutritionForm = () => {
         apiUrl = apiUrl + "&maxCalories=" + nutritionInput.maxCalories;
       }
       if (nutritionInput.numberOfRecords > 0) {
-        apiUrl = apiUrl + "&numberOfRecords=" + nutritionInput.numberOfRecords;
+        apiUrl = apiUrl + "&number=" + nutritionInput.numberOfRecords;
       }
       else {
-        apiUrl = apiUrl + "&numberOfRecords=10";
+        apiUrl = apiUrl + "&number=10";
       }
       return apiUrl;
     }
