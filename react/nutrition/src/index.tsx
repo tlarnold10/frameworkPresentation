@@ -4,13 +4,18 @@ import './index.css';
 import App from './App';
 import NutritionForm from './nutrition-form/nutrition-form.component';
 import reportWebVitals from './reportWebVitals';
+import { store } from './app/store';
+import { Provider } from 'react-redux';
+import DailyRecipes from './daily-recipes/daily-recipes.component';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <NutritionForm />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 

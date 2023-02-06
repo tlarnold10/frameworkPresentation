@@ -1,26 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import DailyRecipes from './daily-recipes/daily-recipes.component'
+import NutritionForm from './nutrition-form/nutrition-form.component';
+import { connect } from 'react-redux';
+import { useAppDispatch, useAppSelector } from './app/hooks';
 
-function App() {
+export function App(props: any, state: any) {
+  
+  const dispatch = useAppDispatch();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NutritionForm onAddRecipe={onAddRecipe}/>
+      <DailyRecipes items={state.items}/>
     </div>
   );
+
+  function onAddRecipe(recipes: any) {
+    dispatch({
+      type: 'ADD_ITEM',
+      payload: recipes
+    })
+  }
 }
 
-export default App;
+
+
+function mapStateToProps(state: any) {
+  return {
+    items: state.items
+  }
+}
+
+export default connect(mapStateToProps)(App);
