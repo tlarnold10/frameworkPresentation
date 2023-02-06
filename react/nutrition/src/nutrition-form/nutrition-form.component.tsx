@@ -4,8 +4,7 @@ import { Nutrition } from './nutrition-form.model';
 import { Table, ListItem, TextField, Button, TableHead, TableBody, TableRow, TableCell  } from '@mui/material';
 import './nutrition-form.css'
 
-const NutritionForm = () => {
-    console.log("help");
+const NutritionForm = (props: any) => {
     const [recipes, setRecipes] = useState<Recipe[]>([]);
     const [nutritionInput, setNutritionInput] = useState<Nutrition>({
       minProtein: 0,
@@ -31,13 +30,11 @@ const NutritionForm = () => {
       event.preventDefault();
       // alert(nutritionInput.minProtein + nutritionInput.numberOfRecords);
       var apiUrl = generateUrl();
-      console.log(apiUrl);
       fetch(apiUrl)
         .then(response => response.json())
-        // .then(data => console.log(data))
-        // .then(data => recipes.map(data => recipes.push(data)))
-        .then(data => setRecipes(data))
-        .then(item => console.log(recipes))
+        .then(data => {
+          setRecipes(data);
+        })
         .catch(err => { console.log(err) });
     }
 
@@ -76,20 +73,27 @@ const NutritionForm = () => {
       return apiUrl;
     }
 
+    const addRecipe = (recipe: any) => {
+      console.log(recipe);
+      props.onAddRecipe(recipe);
+    }
+
     return (
       <div className='container'>
+        <h2>Nutrition Constraints:</h2>
         <form onSubmit={handleSubmit}>
-          <TextField className='inputField' type="number" name="minProtein" label="Min Protein" onChange={handleChange}/><br/>
-          <TextField className='inputField' type="number" name="maxProtein" label="Max Protein" onChange={handleChange}/><br/>
-          <TextField className='inputField' type="number" name="minFat" label="Min Fat" onChange={handleChange}/><br/>
-          <TextField className='inputField' type="number" name="maxFat" label="Max Fat" onChange={handleChange}/><br/>
-          <TextField className='inputField' type="number" name="minCarbs" label="Min Carbs" onChange={handleChange}/><br/>
-          <TextField className='inputField' type="number" name="maxCarbs" label="Max Carbs" onChange={handleChange}/><br/>
-          <TextField className='inputField' type="number" name="minCalories" label="Min Calories" onChange={handleChange}/><br/>
-          <TextField className='inputField' type="number" name="maxCalories" label="Max Calories" onChange={handleChange}/><br/>
+          <TextField className='inputField' type="number" name="minProtein" label="Min Protein" onChange={handleChange}/>
+          <TextField className='inputField' type="number" name="maxProtein" label="Max Protein" onChange={handleChange}/>
+          <TextField className='inputField' type="number" name="minFat" label="Min Fat" onChange={handleChange}/>
+          <TextField className='inputField' type="number" name="maxFat" label="Max Fat" onChange={handleChange}/>
+          <TextField className='inputField' type="number" name="minCarbs" label="Min Carbs" onChange={handleChange}/>
+          <TextField className='inputField' type="number" name="maxCarbs" label="Max Carbs" onChange={handleChange}/>
+          <TextField className='inputField' type="number" name="minCalories" label="Min Calories" onChange={handleChange}/>
+          <TextField className='inputField' type="number" name="maxCalories" label="Max Calories" onChange={handleChange}/>
           <TextField className='inputField' type="number" name="numberOfRecords" label="Number of Records" onChange={handleChange}/><br/>
           <Button className='submitButton' variant="contained" type='submit' value="Submit">Submit</Button>
         </form>
+        <h2>Food Options:</h2>
         <Table>
           <TableHead>
             <TableRow>
@@ -98,6 +102,7 @@ const NutritionForm = () => {
               <TableCell>Fat&nbsp;(g)</TableCell>
               <TableCell>Carbs&nbsp;(g)</TableCell>
               <TableCell>Protein&nbsp;(g)</TableCell>
+              <TableCell>Add to Day</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -108,14 +113,13 @@ const NutritionForm = () => {
               <TableCell>{recipe.fat}</TableCell>
               <TableCell>{recipe.carbs}</TableCell>
               <TableCell>{recipe.protein}</TableCell>
+              <TableCell><Button onClick={() => addRecipe(recipe)}>Add</Button></TableCell>
             </TableRow>
           ))}
           </TableBody>
         </Table>
       </div>
     )
-    
-  
   }
 
 export default NutritionForm;
