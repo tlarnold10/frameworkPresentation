@@ -12,13 +12,20 @@ export function App(props: any, state: any) {
   return (
     <div className="App">
       <NutritionForm onAddRecipe={onAddRecipe}/>
-      <DailyRecipes items={state.items}/>
+      <DailyRecipes onRemoveRecipe={onRemoveRecipe} items={state.items}/>
     </div>
   );
 
   function onAddRecipe(recipes: any) {
     dispatch({
       type: 'ADD_ITEM',
+      payload: recipes
+    })
+  }
+
+  function onRemoveRecipe(recipes: any) {
+    dispatch({
+      type: 'REMOVE_ITEM',
       payload: recipes
     })
   }
