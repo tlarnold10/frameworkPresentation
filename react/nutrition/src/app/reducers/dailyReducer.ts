@@ -6,13 +6,15 @@ const initialState = {
 
 export const dailyReducer = (state = initialState, action: any): any => {
   if (action.type === 'ADD_ITEM') {
-    console.log(state);
-    console.log(action.payload);
-    var newState = state.items.concat(action.payload);
-    console.log(newState);
     return { 
       ...state,
       items: state.items.concat(action.payload)
+    };
+  }
+  else if (action.type === 'REMOVE_ITEM') {
+    return { 
+      ...state,
+      items: state.items.filter(x => x !== action.payload)
     };
   }
   else {
