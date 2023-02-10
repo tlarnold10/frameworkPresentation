@@ -8,6 +8,12 @@ import { AppComponent } from './app.component';
 import { RecipeFormComponent } from './features/recipe-form/recipe-form.component';
 import { FormsModule } from '@angular/forms';
 import { DailyNutritionComponent } from './features/daily/daily-nutrition/daily-nutrition.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +25,12 @@ import { DailyNutritionComponent } from './features/daily/daily-nutrition/daily-
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,26 @@
+table, th , td  {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 15px;
+  }
+
+  table tr:nth-child(odd) {
+    background-color: #f1f1f1;
+  }
+
+  table tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+
+  table {
+    margin: 20px;
+  }
+
+  th {
+    background-color: #4F81BD;
+    color: white;
+  }
+
+  mat-form-field {
+    padding: 10px;
+  }

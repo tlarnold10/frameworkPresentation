@@ -1,70 +1,73 @@
-<p>recipe-form works!</p>
+<div style="padding: 15px"> 
+    <h1>Nutrition Form: </h1>
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Min Protein: </mat-label>
+            <input id="minProtein" required name="minProtein" [(ngModel)]="nutrition.minProtein" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Max Protein: </mat-label>
+            <input  id="maxProtein" required name="maxProtein" [(ngModel)]="nutrition.maxProtein" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Min Fats: </mat-label>
+            <input  id="minFat" required name="minFat" [(ngModel)]="nutrition.minFat" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Max Fat: </mat-label>
+            <input  id="maxFat" required name="maxFat" [(ngModel)]="nutrition.maxFat" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Min Carbs: </mat-label>
+            <input  id="minCarbs" required name="minCarbs" [(ngModel)]="nutrition.minCarbs" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Max Carbs: </mat-label>
+            <input  id="maxCarbs" required name="maxCarbs" [(ngModel)]="nutrition.maxCarbs" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Min Calories: </mat-label>
+            <input  id="minCalories" required name="minCalories" [(ngModel)]="nutrition.minCalories" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Max Calories: </mat-label>
+            <input  id="maxCalories" required name="maxCalories" [(ngModel)]="nutrition.maxCalories" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Number of Results: </mat-label>
+            <input  id="numberOfRecords" required name="numberOfRecords" [(ngModel)]="nutrition.numberOfRecords" matInput>
+        </mat-form-field>
+        <br>
+        <button mat-button color="accent" (click)="submit()">
+          Submit
+        </button>
+    </form>
 
-<form>
-    <div class="form-group">
-        <label for="minProtein">Min Protein: </label>
-        <input type="text" class="form-control" id="minProtein" required name="minProtein" [(ngModel)]="nutrition.minProtein">
+    <div *ngIf="!loading">
+        <h1>Nutrition Options</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Food</th>
+                    <th>Calories</th>
+                    <th>Fat</th>
+                    <th>Carbs</th>
+                    <th>Protein</th>
+                    <th>Add to Daily</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let recipe of recipes">
+                    <td>{{ recipe.title }}</td>
+                    <td>{{ recipe.calories }}</td>
+                    <td>{{ recipe.fat }}</td>
+                    <td>{{ recipe.carbs }}</td>
+                    <td>{{ recipe.protein }}</td>
+                    <td><button mat-button color="primary" (click)="addToDaily(recipe)">ADD</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="form-group">
-        <label for="maxProtein">Max Protein: </label>
-        <input type="text" class="form-control" id="maxProtein" required name="maxProtein" [(ngModel)]="nutrition.maxProtein">
-    </div>
-    <div class="form-group">
-        <label for="minFat">Min Fats: </label>
-        <input type="text" class="form-control" id="minFat" required name="minFat" [(ngModel)]="nutrition.minFat">
-    </div>
-    <div class="form-group">
-        <label for="maxFat">Max Fats: </label>
-        <input type="text" class="form-control" id="maxFat" required name="maxFat" [(ngModel)]="nutrition.maxFat">
-    </div>
-    <div class="form-group">
-        <label for="minCarbs">Min Carbs: </label>
-        <input type="text" class="form-control" id="minCarbs" required name="minCarbs" [(ngModel)]="nutrition.minCarbs">
-    </div>
-    <div class="form-group">
-        <label for="maxCarbs">Max Carbs: </label>
-        <input type="text" class="form-control" id="maxCarbs" required name="maxCarbs" [(ngModel)]="nutrition.maxCarbs">
-    </div>
-    <div class="form-group">
-        <label for="minCalories">Min Calories: </label>
-        <input type="text" class="form-control" id="minCalories" required name="minCalories" [(ngModel)]="nutrition.minCalories">
-    </div>
-    <div class="form-group">
-        <label for="maxCalories">Max Calories: </label>
-        <input type="text" class="form-control" id="maxCalories" required name="maxCalories" [(ngModel)]="nutrition.maxCalories">
-    </div>
-    <div class="form-group">
-        <label for="numberOfRecords">Number of Recipes: </label>
-        <input type="text" class="form-control" id="numberOfRecords" required name="numberOfRecords" [(ngModel)]="nutrition.numberOfRecords">
-    </div>
-    <button (click)="submit()">
-      Submit
-    </button>
-</form>
-
-<div *ngIf="!loading">
-    <table>
-        <thead>
-            <tr>
-                <th>Food</th>
-                <th>Calories</th>
-                <th>Fat</th>
-                <th>Carbs</th>
-                <th>Protein</th>
-                <th>Add to Daily</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let recipe of recipes">
-                <td>{{ recipe.title }}</td>
-                <td>{{ recipe.calories }}</td>
-                <td>{{ recipe.fat }}</td>
-                <td>{{ recipe.carbs }}</td>
-                <td>{{ recipe.protein }}</td>
-                <td><button (click)="addToDaily(recipe)">ADD</button></td>
-            </tr>
-        </tbody>
-    </table>
 </div>
 
 <div>
