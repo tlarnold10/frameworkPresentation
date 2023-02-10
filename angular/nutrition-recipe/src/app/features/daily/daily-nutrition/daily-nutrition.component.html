@@ -1,30 +1,32 @@
-<p>daily-nutrition works!</p>
-<table>
-    <thead>
-        <tr>
-            <th>Food</th>
-            <th>Calories</th>
-            <th>Fat</th>
-            <th>Carbs</th>
-            <th>Protein</th>
-            <th>Remove from Daily</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let recipe of listOfDailyRecipes">
-            <td>{{ recipe.title }}</td>
-            <td>{{ recipe.calories }}</td>
-            <td>{{ recipe.fat }}</td>
-            <td>{{ recipe.carbs }}</td>
-            <td>{{ recipe.protein }}</td>
-            <td><button (click)="removeFromDaily(recipe)">REMOVE</button></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>{{ totalCalories }}</td>
-            <td>{{ totalFat }}</td>
-            <td>{{ totalCarbs }}</td>
-            <td>{{ totalProtein }}</td>
-        </tr>
-    </tbody>
-</table>
+<div style="padding: 15px">    
+    <h1>Daily Nutrition</h1>
+    <table class="mat-elevation-z8">
+        <thead>
+            <tr>
+                <th>Food</th>
+                <th>Calories</th>
+                <th>Fat</th>
+                <th>Carbs</th>
+                <th>Protein</th>
+                <th>Remove from Daily</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let recipe of listOfDailyRecipes">
+                <td>{{ recipe.title }}</td>
+                <td>{{ recipe.calories }}</td>
+                <td>{{ recipe.fat }}</td>
+                <td>{{ recipe.carbs }}</td>
+                <td>{{ recipe.protein }}</td>
+                <td><button mat-button color="primary" (click)="removeFromDaily(recipe)">REMOVE</button></td>
+            </tr>
+            <tr>
+                <td><strong>TOTALS</strong></td>
+                <td><strong>{{ totalCalories }}</strong></td>
+                <td><strong>{{ totalFat }}</strong></td>
+                <td><strong>{{ totalCarbs }}</strong></td>
+                <td><strong>{{ totalProtein }}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

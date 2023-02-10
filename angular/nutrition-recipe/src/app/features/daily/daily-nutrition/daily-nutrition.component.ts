@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/models/recipie.model';
 import { CommunicationServiceService } from 'src/app/services/communication-service.service';
+import { MatTableModule } from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
 
 @Component({
   selector: 'app-daily-nutrition',
