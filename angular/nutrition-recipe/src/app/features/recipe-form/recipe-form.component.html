@@ -43,7 +43,30 @@
 </form>
 
 <div *ngIf="!loading">
-    <ul *ngFor="let recipie of recipies">
-        <li>{{ recipie.title }}</li>
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Food</th>
+                <th>Calories</th>
+                <th>Fat</th>
+                <th>Carbs</th>
+                <th>Protein</th>
+                <th>Add to Daily</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let recipe of recipes">
+                <td>{{ recipe.title }}</td>
+                <td>{{ recipe.calories }}</td>
+                <td>{{ recipe.fat }}</td>
+                <td>{{ recipe.carbs }}</td>
+                <td>{{ recipe.protein }}</td>
+                <td><button (click)="addToDaily(recipe)">ADD</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <app-daily-nutrition></app-daily-nutrition>
 </div>

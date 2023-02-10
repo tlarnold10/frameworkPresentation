@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RecipeFormComponent } from './features/recipe-form/recipe-form.component';
 import { FormsModule } from '@angular/forms';
+import { DailyNutritionComponent } from './features/daily/daily-nutrition/daily-nutrition.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipeFormComponent
+    RecipeFormComponent,
+    DailyNutritionComponent
   ],
   imports: [
     BrowserModule,
