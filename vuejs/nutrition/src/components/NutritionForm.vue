@@ -1,7 +1,16 @@
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import { interpret } from 'xstate';
+import { toggleMachine, useToggleMachine } from '../state/state.ts';
 
 export default {
+    setup() {
+      const { state, send } = useToggleMachine();
+      return {
+        state,
+        send
+      };
+    },
     data() {
         return {
             recipes: [],
@@ -14,7 +23,9 @@ export default {
             minCarbs: 0,
             maxCalories: 0,
             minCalories: 0,
-            numberOfRecords: 0
+            numberOfRecords: 0,
+            toggleService: interpret(toggleMachine),
+            current: toggleMachine.initialState
         }
     },
     methods: {
@@ -59,17 +70,19 @@ export default {
               apiUrl = apiUrl + "&number=10";
             }
             return apiUrl;
+        },
+        addToDailyTracker(recipe) {
+          this.send({ type: 'ADD', payload: recipe })
         }
     },
     mounted () {
-        console.log("Mounting")
+        console.log("Mounting");
     }
 }
 </script>
     
 <template>
     <h1>Nutrition Form</h1>
-
     <form>
         <label>Max Protein: </label>
         <input v-model="maxProtein">
@@ -109,6 +122,7 @@ export default {
                 <td>Fat</td>
                 <td>Carbs</td>
                 <td>Calories</td>
+                <td>Add to Daily Tracker</td>
             </tr>
         </thead>
         <tbody>
@@ -118,6 +132,7 @@ export default {
                 <td>{{ item.fat }}</td>
                 <td>{{ item.carbs }}</td>
                 <td>{{ item.calories }}</td>
+                <td><button v-on:click="addToDailyTracker(item)">ADD</button></td>
             </tr>
         </tbody>
     </table>

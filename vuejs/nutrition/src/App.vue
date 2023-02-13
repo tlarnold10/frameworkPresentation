@@ -1,15 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
   <NutritionForm msg="Welcome to Your Vue.js App"/>
+  <br>
+  <NutritionDailyTracker/>
 </template>
 
 <script>
 import NutritionForm from './components/NutritionForm.vue'
+import NutritionDailyTracker from './components/NutritionDailyTracker.vue'
 
 export default {
   name: 'App',
   components: {
-    NutritionForm
+    NutritionForm,
+    NutritionDailyTracker
   }
 }
 </script>
