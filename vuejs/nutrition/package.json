@@ -9,12 +9,14 @@
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
+    "@quasar/extras": "^1.0.0",
     "@xstate/vue": "^2.0.0",
     "axios": "^1.2.6",
     "babel-eslint": "^10.1.0",
     "bootstrap": "^5.2.3",
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.8.3",
+    "quasar": "^2.0.0",
     "roboto-fontface": "*",
     "vue": "^3.2.13",
     "vue-material": "^1.0.0-beta-15",
@@ -33,6 +35,7 @@
     "eslint-plugin-vue": "^8.7.1",
     "sass": "^1.32.13",
     "sass-loader": "^13.2.0",
+    "vue-cli-plugin-quasar": "~5.0.1",
     "vue-cli-plugin-vuetify": "~2.5.8",
     "webpack-plugin-vuetify": "^2.0.0-alpha.0"
   },

@@ -36,7 +36,7 @@ export default {
     
 <template>
     <h1>Nutrition Daily Tracker</h1>
-    <table v-if="!isLoading">
+    <q-markup-table v-if="!isLoading">
         <thead>
             <tr>
                 <td>Title</td>
@@ -54,7 +54,7 @@ export default {
                 <td>{{ item.fat }}</td>
                 <td>{{ item.carbs }}</td>
                 <td>{{ item.calories }}</td>
-                <td><button v-on:click="removeFromDailyTracker(item)">REMOVE</button></td>
+                <td><q-btn v-on:click="removeFromDailyTracker(item)" color="primary" label="REMOVE"/></td>
             </tr>
             <tr>
                 <td><strong>TOTALS</strong></td>
@@ -64,7 +64,7 @@ export default {
                 <td><strong>{{ state.context.totalCalories }}</strong></td>
             </tr>
         </tbody>
-    </table>
+    </q-markup-table>
 </template>
 
 <style>
