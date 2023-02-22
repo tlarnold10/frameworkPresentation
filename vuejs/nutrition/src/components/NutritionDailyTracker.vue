@@ -54,7 +54,7 @@ export default {
                 <td>{{ item.fat }}</td>
                 <td>{{ item.carbs }}</td>
                 <td>{{ item.calories }}</td>
-                <td><button v-on:click="removeFromDailyTracker(item)">REMOVE</button></td>
+                <td><q-btn v-on:click="removeFromDailyTracker(item)" color="primary" label="REMOVE"/></td>
             </tr>
             <tr>
                 <td><strong>TOTALS</strong></td>

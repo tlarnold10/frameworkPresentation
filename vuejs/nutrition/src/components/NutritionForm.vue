@@ -111,7 +111,7 @@ export default {
         <label>Number of Records: </label>
         <input v-model="numberOfRecords">
         <br>
-        <button type="button" @click="submit">Submit</button>
+        <q-btn color="primary" label="Submit" @click="submit"/>
     </form>
 
     <table v-if="!isLoading">
@@ -132,7 +132,7 @@ export default {
                 <td>{{ item.fat }}</td>
                 <td>{{ item.carbs }}</td>
                 <td>{{ item.calories }}</td>
-                <td><button v-on:click="addToDailyTracker(item)">ADD</button></td>
+                <td><q-btn v-on:click="addToDailyTracker(item)" color="primary" label="ADD"/></td>
             </tr>
         </tbody>
     </table>
