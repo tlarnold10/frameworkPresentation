@@ -83,38 +83,22 @@ export default {
     
 <template>
     <h1>Nutrition Form</h1>
-    <form>
-        <label>Max Protein: </label>
-        <input v-model="maxProtein">
-        <br>
-        <label>Min Protein: </label>
-        <input v-model="minProtein">
-        <br>
-        <label>Max Fat: </label>
-        <input v-model="maxFat">
-        <br>
-        <label>Min Fat: </label>
-        <input v-model="minFat">
-        <br>
-        <label>Max Carbs: </label>
-        <input v-model="maxCarbs">
-        <br>
-        <label>Min Carbs: </label>
-        <input v-model="minCarbs">
-        <br>
-        <label>Max Calories: </label>
-        <input v-model="maxCalories">
-        <br>
-        <label>Min Calories: </label>
-        <input v-model="minCalories">
-        <br>
-        <label>Number of Records: </label>
-        <input v-model="numberOfRecords">
-        <br>
-        <q-btn color="primary" label="Submit" @click="submit"/>
-    </form>
+    <div style="width:40%; margin:15px">
+      <q-form class="q-gutter-md">
+          <q-input filled v-model="maxProtein" label="Max Protein"/>
+          <q-input filled v-model="minProtein" label="Min Protein"/>
+          <q-input filled v-model="maxFat" label="Max Fat"/>
+          <q-input filled v-model="minFat" label="Min Fat"/>
+          <q-input filled v-model="maxCarbs" label="Max Carbs"/>
+          <q-input filled v-model="minCarbs" label="Min Carbs"/>
+          <q-input filled v-model="maxCalories" label="Max Calories"/>
+          <q-input filled v-model="minCalories" label="Min Calories"/>
+          <q-input filled v-model="numberOfRecords" label="Number of Records"/>
+          <q-btn color="primary" label="Submit" @click="submit"/>
+      </q-form>
+    </div>
 
-    <table v-if="!isLoading">
+    <q-markup-table v-if="!isLoading">
         <thead>
             <tr>
                 <td>Title</td>
@@ -135,7 +119,7 @@ export default {
                 <td><q-btn v-on:click="addToDailyTracker(item)" color="primary" label="ADD"/></td>
             </tr>
         </tbody>
-    </table>
+    </q-markup-table>
 </template>
 
 <style>

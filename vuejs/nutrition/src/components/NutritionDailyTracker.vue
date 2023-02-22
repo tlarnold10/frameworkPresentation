@@ -36,7 +36,7 @@ export default {
     
 <template>
     <h1>Nutrition Daily Tracker</h1>
-    <table v-if="!isLoading">
+    <q-markup-table v-if="!isLoading">
         <thead>
             <tr>
                 <td>Title</td>
@@ -64,7 +64,7 @@ export default {
                 <td><strong>{{ state.context.totalCalories }}</strong></td>
             </tr>
         </tbody>
-    </table>
+    </q-markup-table>
 </template>
 
 <style>
