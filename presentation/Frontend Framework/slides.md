@@ -1,36 +1,15 @@
 ---
-# try also 'default' to start simple
 theme: dracula
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-background: https://source.unsplash.com/collection/94734566/1920x1080
-# apply any windi css classes to the current slide
-class: 'text-center'
-# https://sli.dev/custom/highlighters.html
-highlighter: shiki
-# show line numbers in code blocks
-lineNumbers: false
-# some information about the slides, markdown enabled
-info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
-# persist drawings in exports and build
-drawings:
-  persist: false
-# page transition
-transition: slide-left
-# use UnoCSS
-css: unocss
 ---
 
-# State of Frontend Frameworks
+# Frontend Framework Faceoff
 <div>
   <h5>(at least the 3 major frameworks)</h5>
   <h4>Trevor Arnold: Software Engineer at FTI</h4>
 </div>
 
+---
+transition: slide-up
 ---
 
 # Origins | Use Cases
@@ -38,6 +17,8 @@ css: unocss
   <h5>Where do they come from and why you would use them?</h5>
 </div>
 
+---
+transition: slide-up
 ---
 
 # Angular
@@ -67,6 +48,8 @@ css: unocss
 </div>
 
 ---
+transition: slide-up
+---
 
 # React
 <div>
@@ -94,6 +77,8 @@ css: unocss
 </div>
 
 ---
+transition: slide-up
+---
 
 # Vue.js
 <div>
@@ -116,6 +101,33 @@ css: unocss
 </div>
 
 ---
+transition: slide-up
+---
+
+# Some Graphs - Stack Overflow Survey
+<div>
+  <div grid="~ cols-2 gap-4">
+    <div>
+      <img src="/assets/stackoverflow1.png">
+    </div>
+    <div>
+      <img src="/assets/stackoverflow2.png">
+    </div>
+  </div>
+</div>
+
+---
+transition: slide-up
+---
+
+# Some Graphs - Google Trends
+<div>
+  <img src="/assets/googletrends.png">
+  </div>
+
+---
+transition: slide-up
+---
 
 # Demo - Project Overview
 <div>
@@ -130,6 +142,8 @@ css: unocss
 </div>
 
 ---
+transition: slide-up
+---
 
 # Demo - Lessons Learned
 <div>
@@ -143,6 +157,8 @@ css: unocss
 </div>
 
 ---
+transition: slide-up
+---
 
 # Fun Experiment
 <div>
@@ -151,8 +167,10 @@ css: unocss
 </div>
 
 ---
+transition: slide-up
+---
 
-# Conclussion
+# Conclusion
 <div>
   <ol>
     <li>Easier than I thought to move from one to the other. A lot of the same principles across them all</li>
