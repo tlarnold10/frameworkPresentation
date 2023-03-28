@@ -26,7 +26,7 @@ transition: slide-up
     </div>
     <div>
       <ul>
-        <li>Created and maintained by Google, plus open-source community</li>
+        <li>Created (2010) and maintained by Google, plus open-source community</li>
         <li>Built on Typescript and you are expected to use it</li>
         <li>"Javascript inserted into your HTML"</li>
         <li>Batteries included option. You need to build it the angular way
@@ -56,7 +56,7 @@ transition: slide-up
     </div>
     <div>
       <ul>
-        <li>Created and maintained by Facebook (Meta), plus open-source community</li>
+        <li>Created (2013) and maintained by Facebook (Meta), plus open-source community</li>
         <li>"HTML inserted into your Javascript"</li>
         <li>Not as much out of the box and a lot of flexibility. Means you may also need a lot of other libraries or tools with React
           <ul>
@@ -85,7 +85,7 @@ transition: slide-up
     </div>
     <div>
       <ul>
-        <li>Created and maintained by Evan You (ex-Google), plus open-source community</li>
+        <li>Created (2014) and maintained by Evan You (ex-Google), plus open-source community</li>
         <li>Smallest community and similar to angular in that you can structure it how you want
           <ul>
             <li>Difficulties finding examples (compared to Angular and React)</li>
@@ -170,6 +170,29 @@ transition: slide-up
         <li>Uses React for server side rendering</li>
         <li>Is a true framework that has a lot of the functionality included that you would usually have to use another library for in React.</li>
         <li>Use-case: Require high performant web apps, given that the data doesn't change frequently.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+---
+transition: slide-up
+---
+
+# Bonus - Svelte
+<div>
+  <div>
+  <div grid="~ cols-2 gap-4">
+    <div>
+      <img src="/assets/svelte.png">
+    </div>
+    <div>
+      <ul>
+        <li>Created by Rich Harris in 2016, relatively new.</li>
+        <li>Whereas traditional frameworks like React and Vue do the bulk of their work in the browser via the Virtual DOM, Svelte shifts that work into a compile step that happens when you build your app and it compiles to vanilla JavaScript that directly works with the DOM. This can be much more efficient than working with a Virtual DOM.</li>
+        <li>Svelte is great for highly performant web applications or those with less space resources.</li>
+        <li>Fairly easy to learn, but the community is very small given the new-ness of the framework. </li>
       </ul>
     </div>
   </div>
